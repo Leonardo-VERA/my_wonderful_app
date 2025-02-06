@@ -2,15 +2,18 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
-# Cargar datos desde URL
+# Cargar datos
 url = 'https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv'
 df = pd.read_csv(url)
 
-# Título de la app
+# Reducir el dataset (ejemplo: tomar solo 50 filas)
+df = df.sample(50, random_state=42)
+
+# Mostrar título
 st.title('Plotly Express in Streamlit')
 
-# Crear un gráfico interactivo en Streamlit
+# Crear gráfico 3D con menos puntos
 fig = px.scatter_3d(df, x='gdpPercap', y='lifeExp', z='pop', color='continent')
 
-# Mostrar gráfico en Streamlit
-st.plotly_chart(fig)  # Cambié fig.show() por st.plotly_chart(fig)
+# Mostrar el gráfico en Streamlit
+st.plotly_chart(fig)
