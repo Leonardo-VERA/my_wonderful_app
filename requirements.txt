@@ -3,3 +3,4 @@ pandas
 plotly==5.9.0
 streamlit==1.11.1
 watchdog
+altair==4.2.2
